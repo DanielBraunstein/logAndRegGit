@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Login and Registration</title>
+    <link rel="stylesheet" type="text/css" href="../static/logAndRegApp/style.css">
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <h1>Login and Registration</h1>
+    {% if messages %}
+    <div class="errors">
+        {% for error in messagess %}
+        <p>{{ error }}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+    <form action='/register' method='POST'>
+        {% csrf_token %}
+        <label class="inputBox" for="first_name">First Name:
+            <input type="text" name="first_name" id="first_name">
+        </label>
+        <label class="inputBox" for="last_name">Last Name:
+            <input type="text" name="last_name" id="last_name">
+        </label>
+        <label class="inputBox" for="email">email:
+            <input type="email" name="email" id="email">
+        </label>
+        <label class="inputBox" for="password">password:
+            <input type="password" name="password" id="password">
+        </label>
+        <label class="inputBox" for="confpassword">confirm password:
+            <input type="password" name="confpassword" id="confpassword">
+        </label>
+        <div class="inputBox" id="submitter">
+           <input type="submit" value="Register">
+        </div>
+    </form>
+    <form action='/login' method='POST'>
+        {% csrf_token %}
+        <label class="inputBox" for="email">email:
+            <input type="email" name="email" id="email">
+        </label>
+        <label class="inputBox" for="password">password:
+            <input type="password" name="password" id="password">
+        </label>
+        <div class="inputBox" id="submitter">
+            <input type="submit" value="Log On">
+        </div>
+    </form>
+</body>
+
+</html>
